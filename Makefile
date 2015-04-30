@@ -5,10 +5,10 @@ CFLAGS=-Wall -g
 all: mail
 
 clean:
-	rm -f *.o logserver logclient test_driver
+	rm -f *.o mail
 
 mail: Data.o Mail.o PriorityMail.o main_usps.o 
-	$(CC) $(CFLAGS) Data.o Mail.o PriorityMail.o main_usps.o 
+	$(CC) $(CFLAGS) Data.o Mail.o PriorityMail.o main_usps.o -o mail
 Data.o: Data.cpp Mail.h
 
 Mail.o: Mail.cpp Mail.h

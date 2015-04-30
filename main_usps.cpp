@@ -21,3 +21,21 @@ int main()
         }
     }
 }
+
+int Menu () {
+    int tmpOpt = 0;
+    cout << "Enter an option:" << endl;
+    cout << "\t(1) Introduce First mail" << endl;
+    cout << "\t(2) Introduce Priority mail" << endl;
+    cout << "\t(3) Print all mail information" << endl;
+    cout << "\t(4) Exit" << endl;
+    cin >> tmpOpt;
+    if( tmpOpt != 1
+            && tmpOpt != 2
+            && tmpOpt != 3
+            && tmpOpt != 4) {
+        cout << "Invalid option" << endl;
+        return 0;
+    }
+    return tmpOpt;
+}
