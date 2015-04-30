@@ -1,23 +1,14 @@
-#include "Data.h"
+#include <iostream>
+#include <string>
+#include <sstream>
 #include "Mail.h"
-#include "PriorityMail.h"
 
-int Menu();
+using namespace std;
 
-int main()
-{
-	Mail *list[15]; //array of Mail pointer of the class
-	int opc,num=0;
-	while(1) {
-		opc=Menu();
-		if(opc ==1) {
-			//declare a Mail and add to list
-		} else if(opc ==2) {
-			//declare a Priority Mail and add to the class
-		} else if(opc ==3) {
-			//print all data in a list
-		} else if(opc ==4) {
-			//free memory and exit
-		}
-	}
+//Overloading the input stream operator
+istream& operator >>(istream &s, Mail &mail) {
+    s >> mail.sender;
+    s >> mail.addressee;
+    s >> mail.postage;
+    return s;
 }
