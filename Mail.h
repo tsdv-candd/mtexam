@@ -11,7 +11,7 @@ protected:
     static double postage;
 public:
     friend istream& operator>>(istream &s, Mail &mail);
-    virtual double calculatePostage() = 0;
+    virtual double calculatePostage() {};
     void seePostage();
 };
 

@@ -12,32 +12,32 @@ PriorityMail::PriorityMail(Zone z, double w, bool urg) {
 }
 
 double PriorityMail::calculatePostage() {
-    double dVal = 0;
+    //double dVal = 0;
     //For national mail
     if (area == national) {
         if(weight < 11 && (!urgent)) {
-            dVal = 5;
+            postage = 5;
         } else if (weight < 11 && (urgent)) {
-            dVal = 9;
+            postage = 9;
         } else if (weight >= 11 && (!urgent)) {
-            dVal = 6 * weight;
+            postage = 6 * weight;
         } else if (weight >= 11 && (urgent)) {
-            dVal = 10 * weight;
+            postage = 10 * weight;
         }
     }
     //For international mail
     else if (area == international) {
         if(weight < 11 && (!urgent)) {
-            dVal = 8;
+            postage = 8;
         } else if (weight < 11 && (urgent)) {
-            dVal = 15;
+            postage = 15;
         } else if (weight >= 11 && (!urgent)) {
-            dVal = 8.5 * weight;
+            postage = 8.5 * weight;
         } else if (weight >= 11 && (urgent)) {
-            dVal = 16 * weight;
+            postage = 16 * weight;
         }
     }
-    return dVal;
+    return postage;
 }
 istream& operator >> (istream& is, Zone& e) {
     int iVal;
@@ -47,9 +47,17 @@ istream& operator >> (istream& is, Zone& e) {
 }
 
 istream& operator >>(istream &s, PriorityMail &pMail) {
+    cout << "Urgent:(No - 0 /Yes - 1)? " << endl;
     s >> pMail.urgent;
-    s >> pMail.area;
+    cout << "Weight:? " << endl;
     s >> pMail.weight;
-    s >> pMail.price;
+    cout << "Zone (national - 0/international - 1):?" << endl;
+    s >> pMail.area;
+    //Mail::operator >>(s, &pMail);
+    cout << "Address:" << endl;
+    s >> pMail.addressee;
+    cout << "Sender:" << endl;
+    s >> pMail.sender;
+    return s;
 }
 

@@ -3,7 +3,7 @@
 
 #include "Mail.h"
 
-enum Zone {national, international};
+enum Zone {national = 0, international};
 
 class PriorityMail : public Mail
 {

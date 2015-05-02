@@ -1,3 +1,4 @@
+#include <string.h>
 #include "Data.h"
 #include "Mail.h"
 #include "PriorityMail.h"
@@ -7,17 +8,33 @@ int Menu();
 int main()
 {
     Mail *list[15]; //array of Mail pointer of the class
-    int opc,num=0;
+    memset(list, 0, sizeof(list));
+    int opc, num=0;
     while(1) {
-        opc=Menu();
+        opc = Menu();
         if(opc ==1) {
             //declare a Mail and add to list
+            Mail mail;
+            cin >> mail;
+            list[num++] = &mail;
+            cout << "num=" << num << endl;
         } else if(opc ==2) {
             //declare a Priority Mail and add to the class
+            PriorityMail pMail(national, 0, 0);
+            cin >> pMail;
+            pMail.calculatePostage();
+            list[num++] = &pMail;
         } else if(opc ==3) {
             //print all data in a list
+            for(num =0; num < 15; num++) {
+                if(list[num]) {
+                    cout << "Mail nr" << num << endl;
+                    list[num]->seePostage();
+                }
+            }
         } else if(opc ==4) {
             //free memory and exit
+            break;
         }
     }
 }
